@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class FindByIdRequestDto {
 
+
     private Long id;
 
     @JsonCreator

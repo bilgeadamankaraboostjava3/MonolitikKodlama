@@ -1,15 +1,14 @@
 package com.boostjava2.MonolitikKodlama.controller;
 
 import com.boostjava2.MonolitikKodlama.dto.request.FindByIdRequestDto;
+import com.boostjava2.MonolitikKodlama.dto.response.GetAllSatisResponseDto;
 import com.boostjava2.MonolitikKodlama.repository.entity.Satis;
 import com.boostjava2.MonolitikKodlama.services.SatisService;
 import com.boostjava2.MonolitikKodlama.utility.Datas;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +26,8 @@ public class SatisController {
         return ResponseEntity.ok("Kayıtlar Eklendi.");
     }
     @GetMapping("/getall")
-    public ResponseEntity<List<Satis>> findAll(){
-        return ResponseEntity.ok(satisService.findAll());
+    public ResponseEntity<List<GetAllSatisResponseDto>> findAll(){
+        return ResponseEntity.ok(satisService.findAllDto());
     }
 
     @PostMapping("/findbyid")
@@ -39,5 +38,7 @@ public class SatisController {
         }
         return ResponseEntity.ok(new Satis());
     }
+
+
 
 }
