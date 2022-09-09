@@ -47,4 +47,5 @@ public class MusteriService extends ServiceManager<Musteri, Long>{
     public  Optional<Musteri> findTopOptionalByAdOOrderByIdDesc(String ad){
         return musteriRepository.findTopOptionalByAdOrderByIdDesc(ad);
     }
+
 }
