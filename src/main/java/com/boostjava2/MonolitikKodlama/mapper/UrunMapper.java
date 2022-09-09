@@ -22,4 +22,6 @@ public interface UrunMapper {
      * Çıktılanacak bilgi: Urun
      */
     Urun toUrun(UrunSaveRequestDto dto);
+    UrunSaveRequestDto fromUrun(Urun urun);
+
 }
