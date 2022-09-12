@@ -43,6 +43,17 @@ public class SatisController {
         return ResponseEntity.ok("Kayıtlar Eklendi.");
     }
 
+    @GetMapping("/getallbymusteriadi")
+    public ResponseEntity<List<GetAllSatisResponseDto>> findAllByMusteriAdGet(String musteriadi){
+        System.out.println("Get Mothodu Çağrıldı.");
+        return ResponseEntity.ok(satisService.findAllDto(musteriadi));
+    }
+
+    @PostMapping("/getallbymusteriadi")
+    public ResponseEntity<List<GetAllSatisResponseDto>> findAllByMusteriAdPost(String musteriadi){
+        System.out.println("Post Mothodu Çağrıldı.");
+        return ResponseEntity.ok(satisService.findAllDto(musteriadi));
+    }
     /**
      * localhost:9090/satis/getall
      * @return

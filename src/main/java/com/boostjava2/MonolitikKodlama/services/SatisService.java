@@ -14,6 +14,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -39,6 +40,10 @@ public class SatisService extends ServiceManager<Satis, Long> {
             return satisRepository.findById(dto.getId());
         }
         return Optional.empty();
+    }
+
+    public List<GetAllSatisResponseDto> findAllDto(String musteriadi){
+        return findAllDto().stream().filter(x-> x.getMusteriadi().contains(musteriadi)).collect(Collectors.toList());
     }
 
     public List<GetAllSatisResponseDto> findAllDto(){
