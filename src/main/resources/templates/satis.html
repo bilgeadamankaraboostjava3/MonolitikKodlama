@@ -59,14 +59,15 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>1</td>
-        <td>Ahmet</td>
-        <td>Şeker</td>
-        <td>1</td>
-        <td>150₺</td>
-        <td>150₺</td>
-        <td>01/01/20222</td>
+      <tr th:each="satis,inter :${satislistesi}">
+        <td><label th:text="${satis.id}"/></td>
+        <td><label th:text="${satis.musteriadi}"/></td>
+        <td><label th:text="${satis.urunadi}"/></td>
+        <td><label th:text="${satis.adet}"/></td>
+        <td><label th:text="${satis.fiyat}"/></td>
+        <td><label th:text="${satis.toplamfiyat}"/></td>
+        <td><label th:text="${satis.createddate}"/></td>
+
       </tr>
 
       </tbody>
