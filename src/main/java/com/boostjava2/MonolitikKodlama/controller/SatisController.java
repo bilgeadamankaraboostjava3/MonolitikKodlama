@@ -7,12 +7,19 @@ import com.boostjava2.MonolitikKodlama.services.SatisService;
 import com.boostjava2.MonolitikKodlama.utility.Datas;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * RestAPI
+ * -- Kullanıcıdan tüm HTML methodlarında istek alıp yine kullanıyıya
+ *    response olarak bir Entity dönebildiğimiz yapılandırma şeklidir.
+ * -- 3. Parti uygulamaların birbirleriyle haberleşmesi için kullanılır.
+ * -- Microservis yapısında anahtar rol oynar ve microservislerin aralarında
+ *    haberleşmesini sağlar.
+ */
 @RestController
 @RequestMapping("/satis")
 @RequiredArgsConstructor
@@ -20,13 +27,29 @@ public class SatisController {
 
     private final SatisService satisService;
 
+    /**
+     * Action -> Method kendisi
+     * localhost:9090/satis/savealldemo
+     * GET
+     * POST
+     * PUT
+     * DELETE
+     *
+     * @return
+     */
     @GetMapping("/savealldemo")
     public ResponseEntity<String> saveAllDemo(){
         satisService.saveAll(new Datas().getSatisList());
         return ResponseEntity.ok("Kayıtlar Eklendi.");
     }
+
+    /**
+     * localhost:9090/satis/getall
+     * @return
+     */
     @GetMapping("/getall")
-    public ResponseEntity<List<GetAllSatisResponseDto>> findAll(){
+    public ResponseEntity<List<GetAllSatisResponseDto>> findAll(String id){
+        System.out.println("gelen id......: " + id);
         return ResponseEntity.ok(satisService.findAllDto());
     }
 
@@ -39,6 +62,9 @@ public class SatisController {
         return ResponseEntity.ok(new Satis());
     }
 
-
+    @GetMapping("/message")
+    public String getMessage(){
+        return "Merhaba";
+    }
 
 }

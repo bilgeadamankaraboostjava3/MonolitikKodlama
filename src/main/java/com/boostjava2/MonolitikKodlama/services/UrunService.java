@@ -16,13 +16,13 @@ public class UrunService extends ServiceManager<Urun, Long> {
         this.urunRepository = urunRepository;
     }
 
+    /**
+     * OverLoading işlemi yapılmıştır. Aynı isimde farklı parametrelerde metotlar oluşturulmuştur.
+     * @param dto
+     * @return
+     */
     public Urun save(UrunSaveRequestDto dto){
-        Urun urun = Urun.builder()
-                .fiyat(dto.getFiyat())
-                .marka(dto.getMarka())
-                .model(dto.getModel())
-                .ad(dto.getAd()).build();
-        return urunRepository.save(urun);
+        return urunRepository.save(UrunMapper.INSTANCE.toUrun(dto));
     }
 
     public Urun saveMapper(UrunSaveRequestDto dto){
