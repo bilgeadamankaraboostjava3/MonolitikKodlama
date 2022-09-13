@@ -1,6 +1,7 @@
 package com.boostjava2.MonolitikKodlama.controllermvc;
 
-import com.boostjava2.MonolitikKodlama.repository.entity.Satis;
+import static com.boostjava2.MonolitikKodlama.constants.Urls.*;
+
 import com.boostjava2.MonolitikKodlama.services.MusteriService;
 import com.boostjava2.MonolitikKodlama.services.SatisService;
 import com.boostjava2.MonolitikKodlama.services.UrunService;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/WEB/satis")
+@RequestMapping(VERSION + WEB + SATIS)
 @RequiredArgsConstructor
 public class SatisMvcController {
 
@@ -20,7 +21,7 @@ public class SatisMvcController {
     private final MusteriService musteriService;
     private final UrunService urunService;
 
-    @GetMapping("/index")
+    @GetMapping(INDEX)
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("satis");
@@ -43,7 +44,7 @@ public class SatisMvcController {
      * @param fiyat
      * @return
      */
-    @PostMapping("/save")
+    @PostMapping(SAVE)
     public ModelAndView satis(Long musteriid, Long urunid, Integer adet, Double fiyat){
        satisService.save(musteriid,urunid,adet,fiyat);
        return new ModelAndView("redirect:index");

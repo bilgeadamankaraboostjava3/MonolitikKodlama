@@ -8,7 +8,7 @@ import com.boostjava2.MonolitikKodlama.utility.Datas;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import static com.boostjava2.MonolitikKodlama.constants.Urls.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +21,7 @@ import java.util.Optional;
  *    haberleşmesini sağlar.
  */
 @RestController
-@RequestMapping("/satis")
+@RequestMapping(VERSION+API + SATIS)
 @RequiredArgsConstructor
 public class SatisController {
 
@@ -37,19 +37,19 @@ public class SatisController {
      *
      * @return
      */
-    @GetMapping("/savealldemo")
+    @GetMapping(SAVEALL)
     public ResponseEntity<String> saveAllDemo(){
         satisService.saveAll(new Datas().getSatisList());
         return ResponseEntity.ok("Kayıtlar Eklendi.");
     }
 
-    @GetMapping("/getallbymusteriadi")
+    @GetMapping(GETALLBYMUSTERIADI)
     public ResponseEntity<List<GetAllSatisResponseDto>> findAllByMusteriAdGet(String musteriadi){
         System.out.println("Get Mothodu Çağrıldı.");
         return ResponseEntity.ok(satisService.findAllDto(musteriadi));
     }
 
-    @PostMapping("/getallbymusteriadi")
+    @PostMapping(GETALLBYMUSTERIADI)
     public ResponseEntity<List<GetAllSatisResponseDto>> findAllByMusteriAdPost(String musteriadi){
         System.out.println("Post Mothodu Çağrıldı.");
         return ResponseEntity.ok(satisService.findAllDto(musteriadi));
@@ -58,13 +58,13 @@ public class SatisController {
      * localhost:9090/satis/getall
      * @return
      */
-    @GetMapping("/getall")
+    @GetMapping(FINDALL)
     public ResponseEntity<List<GetAllSatisResponseDto>> findAll(String id){
         System.out.println("gelen id......: " + id);
         return ResponseEntity.ok(satisService.findAllDto());
     }
 
-    @PostMapping("/findbyid")
+    @PostMapping(FINDBYID)
     public ResponseEntity<Satis> findById(FindByIdRequestDto dto){
         Optional<Satis> satis = satisService.findById(dto);
         if(satis.isPresent()){

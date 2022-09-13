@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import static com.boostjava2.MonolitikKodlama.constants.Urls.*;
 @RestController
-@RequestMapping("/urun")
+@RequestMapping(VERSION+API + URUN)
 @RequiredArgsConstructor
 public class UrunController {
 
     private final UrunService urunService;
 
-    @GetMapping("/savealldemo")
+    @GetMapping(SAVEALL)
     public ResponseEntity<String> saveAllDemo(){
         urunService.saveAll(new Datas().getUrunList());
         return ResponseEntity.ok("Kayıt başarılı");
     }
 
-    @PostMapping("/save")
+    @PostMapping(SAVE)
     public ResponseEntity<Urun> save(Urun urun){
         return ResponseEntity.ok(urunService.save(urun));
     }
 
-    @PostMapping("/saveparam")
+    @PostMapping(SAVEPARAM)
     public ResponseEntity<Urun> saveParameter(String ad,String marka,
                                               String model,Double fiyat){
         Urun urun = Urun.builder()
@@ -40,7 +40,7 @@ public class UrunController {
         return ResponseEntity.ok(urunService.save(urun));
     }
 
-    @PostMapping("/saveparamdto")
+    @PostMapping(SAVEPARAMDTO)
     public ResponseEntity<Urun> saveParamDto(UrunSaveRequestDto dto){
         return ResponseEntity.ok(urunService.saveMapper(dto));
     }

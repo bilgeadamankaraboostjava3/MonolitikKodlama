@@ -8,12 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import static com.boostjava2.MonolitikKodlama.constants.Urls.*;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/musteri")
+@RequestMapping(VERSION + API + MUSTERI)
 @RequiredArgsConstructor
 public class MusteriController {
 
@@ -23,7 +23,7 @@ public class MusteriController {
      * localhost:9090/musteri/save
      * @return
      */
-    @GetMapping("/saveall")
+    @GetMapping(SAVEALL)
     public ResponseEntity<Void> saveAll(){
         try{
             musteriService.saveAll(new Datas().getMusteriList());
@@ -33,38 +33,38 @@ public class MusteriController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/getall")
+    @GetMapping(FINDALL)
     public ResponseEntity<List<Musteri>> findAll(){
         return ResponseEntity.ok(musteriService.findAll());
     }
 
-    @GetMapping("/getallbyadres")
+    @GetMapping(GETBYADRES)
     public ResponseEntity<List<Musteri>> findAllByAdres(){
         String adres = "İstanbul";
         return ResponseEntity.ok(musteriService.findAllByAdres(adres));
     }
 
-    @GetMapping("/getallbyadlike")
+    @GetMapping(GETBYADLIKE)
     public ResponseEntity<List<Musteri>> findAllByAdLike(){
         String ad = "%e%";
         return ResponseEntity.ok(musteriService.findAllByAdLike(ad));
     }
 
-    @GetMapping("/getallbyadandadres")
+    @GetMapping(GETBYADANDADRES)
     public ResponseEntity<List<Musteri>> findByAdStartsWithAndAdresStartsWith(){
         String ad = "A";
         String adres = "A";
         return ResponseEntity.ok(musteriService.findByAdStartsWithAndAdresStartsWith(ad, adres));
     }
 
-    @GetMapping("/getallbycreateddate")
+    @GetMapping(GETBYCREATEDDATE)
     public ResponseEntity<List<Musteri>> findAllByCreateddateGreaterThan(){
         Long createddate = 1662498000000L; // 08.09.2022 00:00:00
 
         return ResponseEntity.ok(musteriService.findAllByCreateddateGreaterThan(createddate));
     }
 
-    @GetMapping("/getallbyad")
+    @GetMapping(GETBYAD)
     public ResponseEntity<Object> findByAd(){
         String ad = "Ali";
         Optional<Musteri> musteri = musteriService.findByAd(ad);
@@ -74,7 +74,7 @@ public class MusteriController {
         return ResponseEntity.badRequest().build();
     }
 
-    @GetMapping("/getallbyaddesc")
+    @GetMapping(GETBYADDESC)
     public ResponseEntity<Object> findByAdDesc(){
         String ad = "Ali";
         Optional<Musteri> musteri = musteriService.findTopOptionalByAdOOrderByIdDesc(ad);
