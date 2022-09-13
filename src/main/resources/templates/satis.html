@@ -17,11 +17,18 @@
     <div class="col-8">
       <div class="mb-3">
         <label class="form-label">Müşteri Adı</label>
-        <input type="text" class="form-control">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option value="-1" selected>Müşteri Seçiniz</option>
+          <option th:each="musteri : ${musterilistesi}" th:value="${musteri.id}" th:text="${musteri.ad + ' '+ musteri.soyad}"/>
+        </select>
+
       </div>
       <div class="mb-3">
         <label class="form-label">Ürün Adı</label>
-        <input type="text" class="form-control">
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option value="-1" selected>Ürün Seçiniz</option>
+          <option th:each="urun : ${urunlistesi}" th:value="${urun.id}" th:text="${urun.ad}"/>
+        </select>
       </div>
       <div class="mb-3">
         <label class="form-label">Adet</label>
@@ -59,13 +66,13 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="satis,inter :${satislistesi}">
+      <tr th:each="satis,inter :${selamarkadasimnasisinnerelerdesin}">
         <td><label th:text="${satis.id}"/></td>
         <td><label th:text="${satis.musteriadi}"/></td>
         <td><label th:text="${satis.urunadi}"/></td>
         <td><label th:text="${satis.adet}"/></td>
-        <td><label th:text="${satis.fiyat}"/></td>
-        <td><label th:text="${satis.toplamfiyat}"/></td>
+        <td><label th:text="${satis.fiyat+'₺'}"/></td>
+        <td><label th:text="${satis.toplamfiyat+'₺'}"/></td>
         <td><label th:text="${satis.createddate}"/></td>
 
       </tr>

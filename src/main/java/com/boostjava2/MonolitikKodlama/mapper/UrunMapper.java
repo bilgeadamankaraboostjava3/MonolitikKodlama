@@ -3,6 +3,7 @@ package com.boostjava2.MonolitikKodlama.mapper;
 import com.boostjava2.MonolitikKodlama.dto.request.UrunSaveRequestDto;
 import com.boostjava2.MonolitikKodlama.repository.entity.Urun;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -21,6 +22,7 @@ public interface UrunMapper {
      * Alınacak bilgi: Dto
      * Çıktılanacak bilgi: Urun
      */
+
     Urun toUrun(UrunSaveRequestDto dto);
     UrunSaveRequestDto fromUrun(Urun urun);
 
