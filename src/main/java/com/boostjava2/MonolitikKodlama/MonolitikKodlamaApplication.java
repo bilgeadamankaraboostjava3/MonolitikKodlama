@@ -19,9 +19,9 @@ public class MonolitikKodlamaApplication {
 	private final MusteriService musteriService;
 	@PostConstruct
 	private void implData(){
-		musteriService.saveAll(new Datas().getMusteriList());
-		urunService.saveAll(new Datas().getUrunList());
-		satisService.saveAll(new Datas().getSatisList());
+	//	musteriService.saveAll(new Datas().getMusteriList());
+//		urunService.saveAll(new Datas().getUrunList());
+//		satisService.saveAll(new Datas().getSatisList());
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(MonolitikKodlamaApplication.class, args);
