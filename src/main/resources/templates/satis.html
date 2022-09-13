@@ -14,43 +14,46 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-8">
-      <div class="mb-3">
-        <label class="form-label">Müşteri Adı</label>
-        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-          <option value="-1" selected>Müşteri Seçiniz</option>
-          <option th:each="musteri : ${musterilistesi}" th:value="${musteri.id}" th:text="${musteri.ad + ' '+ musteri.soyad}"/>
-        </select>
+    <form action="save" method="post">
+      <div class="col-8">
+        <div class="mb-3">
+          <label class="form-label">Müşteri Adı</label>
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="musteriid">
+            <option value="-1" selected>Müşteri Seçiniz</option>
+            <option th:each="musteri : ${musterilistesi}" th:value="${musteri.id}" th:text="${musteri.ad + ' '+ musteri.soyad}"/>
+          </select>
+
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Ürün Adı</label>
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="urunid">
+            <option value="-1" selected>Ürün Seçiniz</option>
+            <option th:each="urun : ${urunlistesi}" th:value="${urun.id}" th:text="${urun.ad+ ' marka: '+ urun.marka+ ' model: '+urun.model}"/>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Adet</label>
+          <input type="text" class="form-control" name="adet">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Fiyat</label>
+          <input type="text" class="form-control" name="fiyat">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Toplam Fiyat</label>
+          <input type="text" class="form-control" name="toplamfiyat">
+        </div>
 
       </div>
-      <div class="mb-3">
-        <label class="form-label">Ürün Adı</label>
-        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-          <option value="-1" selected>Ürün Seçiniz</option>
-          <option th:each="urun : ${urunlistesi}" th:value="${urun.id}" th:text="${urun.ad}"/>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Adet</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Fiyat</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Toplam Fiyat</label>
-        <input type="text" class="form-control">
-      </div>
+      <div class="col-4 ">
+        <div class="d-grid gap-2 mt-3">
+          <button type="submit" class="btn btn-success btn-block">Yeni Kayıt</button>
+          <button type="submit" class="btn btn-danger">Kaydet</button>
 
-    </div>
-    <div class="col-4 ">
-      <div class="d-grid gap-2 mt-3">
-        <button type="submit" class="btn btn-success btn-block">Yeni Kayıt</button>
-        <button type="submit" class="btn btn-danger">Kaydet</button>
-
+        </div>
       </div>
-    </div>
+    </form>
+
   </div>
   <div class="row">
     <table class="table table-striped table-hover">

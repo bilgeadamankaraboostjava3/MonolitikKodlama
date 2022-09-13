@@ -87,7 +87,7 @@ public class SatisService extends ServiceManager<Satis, Long> {
                                         .atZone(java.time.ZoneId.systemDefault())
                                         .toLocalDate()
                         )
-                                .urunadi(urun.get().getAd())
+                                .urunadi(urun.get().getAd()+" - marka: "+ urun.get().getMarka()+"model: "+urun.get().getModel())
                                 .musteriadi(musteri.get().getAd())
                         .build());
             }else{
@@ -100,6 +100,16 @@ public class SatisService extends ServiceManager<Satis, Long> {
         });
 
         return responseDtoList;
+    }
+
+    public void save(Long musteriid,Long urunid,Integer adet,Double fiyat){
+        satisRepository.save(Satis.builder()
+                .musteriid(musteriid)
+                .urunid(urunid)
+                .adet(adet)
+                .fiyat(fiyat)
+                        .createddate(System.currentTimeMillis())
+                .build());
     }
 
 }
