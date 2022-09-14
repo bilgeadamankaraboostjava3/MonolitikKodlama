@@ -57,4 +57,11 @@ public class SatisMvcController {
         Thread.sleep(2000);
         return new ModelAndView("redirect:index");
     }
+
+    @PostMapping(UPDATE)
+    public ModelAndView update(Long id, Long musteriid, Long urunid, Integer adet, Double fiyat){
+        satisService.update(id,musteriid,urunid,adet,fiyat);
+        return new ModelAndView("redirect:index");
+    }
+
 }

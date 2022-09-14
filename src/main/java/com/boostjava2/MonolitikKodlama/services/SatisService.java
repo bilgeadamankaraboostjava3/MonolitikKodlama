@@ -114,4 +114,13 @@ public class SatisService extends ServiceManager<Satis, Long> {
                 .build());
     }
 
+    public void update(Long id, Long musteriid, Long urunid, Integer adet, Double fiyat){
+       Satis satis = satisRepository.findById(id).get();
+         satis.setMusteriid(musteriid);
+         satis.setUrunid(urunid);
+         satis.setAdet(adet);
+         satis.setFiyat(fiyat);
+         satis.setUpdateddate(System.currentTimeMillis());
+        satisRepository.save(satis);
+    }
 }
