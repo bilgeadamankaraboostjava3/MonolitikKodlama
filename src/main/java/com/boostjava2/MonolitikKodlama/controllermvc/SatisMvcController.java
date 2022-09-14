@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,5 +49,11 @@ public class SatisMvcController {
     public ModelAndView satis(Long musteriid, Long urunid, Integer adet, Double fiyat){
        satisService.save(musteriid,urunid,adet,fiyat);
        return new ModelAndView("redirect:index");
+    }
+
+    @PostMapping(DELETE)
+    public ModelAndView delete(Long id){
+        satisService.deleteById(id);
+        return new ModelAndView("redirect:index");
     }
 }
