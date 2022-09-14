@@ -13,6 +13,8 @@ import java.time.LocalDate;
 @Builder
 public class GetAllSatisResponseDto {
     private Long id;
+    private Long musteriid;
+    private Long urunid;
     private String musteriadi;
     private String urunadi;
     private int adet;

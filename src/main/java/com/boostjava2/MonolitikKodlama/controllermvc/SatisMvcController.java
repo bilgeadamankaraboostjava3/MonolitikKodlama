@@ -52,8 +52,9 @@ public class SatisMvcController {
     }
 
     @PostMapping(DELETE)
-    public ModelAndView delete(Long id){
+    public ModelAndView delete(Long id) throws InterruptedException {
         satisService.deleteById(id);
+        Thread.sleep(2000);
         return new ModelAndView("redirect:index");
     }
 }

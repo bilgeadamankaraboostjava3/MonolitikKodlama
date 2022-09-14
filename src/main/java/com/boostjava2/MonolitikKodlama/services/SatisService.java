@@ -89,6 +89,8 @@ public class SatisService extends ServiceManager<Satis, Long> {
                         )
                                 .urunadi(urun.get().getAd()+" - marka: "+ urun.get().getMarka()+"model: "+urun.get().getModel())
                                 .musteriadi(musteri.get().getAd())
+                                .musteriid(musteri.get().getId())
+                                .urunid(urun.get().getId())
                         .build());
             }else{
                 /**
