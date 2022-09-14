@@ -19,6 +19,7 @@ public class Urls {
     public static final String MUSTERI = "/musteri";
     public static final String SATIS = "/satis";
     public static final String URUN = "/urun";
+    public static final String INFORMATIONS = "/informations";
     /**
      * Actions -> Methodlar
      * 1. olarak default methodları aynen kullanmak için yazalım
@@ -48,4 +49,11 @@ public class Urls {
      */
     public static final String SAVEPARAM = "/saveparam";
     public static final String SAVEPARAMDTO = "/saveparamdto";
+
+    /**
+     * API -> Information Controller
+     */
+    public static final String INFO = "/info";
+    public static final String TITLE = "/title";
+
 }

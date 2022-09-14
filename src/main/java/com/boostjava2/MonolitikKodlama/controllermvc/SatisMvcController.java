@@ -33,8 +33,6 @@ public class SatisMvcController {
         return modelAndView;
     }
 
-    // http://localhost:9090/WEB/satis/save
-
     /**
      * ÖNEMLİ!!!!!
      * kayıt methodunda tekrardan bir sayfa dönmüyoruz. nedeni zaten bu işlemi yapabilen bir endpoint var
@@ -54,7 +52,6 @@ public class SatisMvcController {
     @PostMapping(DELETE)
     public ModelAndView delete(Long id) throws InterruptedException {
         satisService.deleteById(id);
-        Thread.sleep(2000);
         return new ModelAndView("redirect:index");
     }
 
