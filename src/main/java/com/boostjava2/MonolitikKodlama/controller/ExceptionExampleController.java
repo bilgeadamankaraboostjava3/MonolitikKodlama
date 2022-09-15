@@ -12,8 +12,13 @@ public class ExceptionExampleController {
      * Uygulamanız için de mutlaka hataları yakalayabilen bir sistem oluşturmalısınız.
      * @return
      */
-    @RequestMapping("/test")
+        @RequestMapping("/test")
         public String test() {
                 throw new RuntimeException("Test exception");
         }
+
+
+
+
+
 }

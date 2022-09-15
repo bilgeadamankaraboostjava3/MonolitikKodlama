@@ -19,7 +19,7 @@ public class MonolitikKodlamaApplication {
 	private final MusteriService musteriService;
 	@PostConstruct
 	private void implData(){
-	//	musteriService.saveAll(new Datas().getMusteriList());
+		musteriService.saveAll(new Datas().getMusteriList());
 //		urunService.saveAll(new Datas().getUrunList());
 //		satisService.saveAll(new Datas().getSatisList());
 	}

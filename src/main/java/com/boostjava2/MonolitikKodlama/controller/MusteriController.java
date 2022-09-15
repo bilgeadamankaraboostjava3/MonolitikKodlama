@@ -1,10 +1,13 @@
 package com.boostjava2.MonolitikKodlama.controller;
 
+import com.boostjava2.MonolitikKodlama.exception.ErrorType;
+import com.boostjava2.MonolitikKodlama.exception.MonolitikManagerException;
 import com.boostjava2.MonolitikKodlama.repository.entity.Musteri;
 import com.boostjava2.MonolitikKodlama.services.MusteriService;
 import com.boostjava2.MonolitikKodlama.utility.Datas;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +21,18 @@ import java.util.Optional;
 public class MusteriController {
 
     private final MusteriService musteriService;
+
+
+
+    @CrossOrigin(origins = "http://localhost:8081")
+    @GetMapping("/getmusteribyad")
+    public ResponseEntity<Musteri> getMusteriByAd(String ad){
+        Optional<Musteri> result = musteriService.findByAd(ad);
+        if(result.isPresent())
+            return ResponseEntity.ok(result.get()); //200
+        else
+            throw  new MonolitikManagerException(ErrorType.MUSTERI_BULUNAMADI); // 500
+    }
 
     /**
      * localhost:9090/musteri/save
@@ -33,6 +48,7 @@ public class MusteriController {
         return ResponseEntity.ok().build();
     }
 
+    @CrossOrigin
     @GetMapping(FINDALL)
     public ResponseEntity<List<Musteri>> findAll(){
         return ResponseEntity.ok(musteriService.findAll());
