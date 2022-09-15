@@ -14,8 +14,8 @@ public class InformationController {
         @Value("${myapplication.benimuydurdugumbiralan.info}")
         private String info;
 
-        @Value("${myapplication.benimuydurdugumbiralan}")
-        private Map<String, String> map;
+        //@Value("${myapplication.benimuydurdugumbiralan}")
+        //private Map<String, String> map;
         @Value("${myapplication.benimuydurdugumbiralan.title}")
         private String title;
 
